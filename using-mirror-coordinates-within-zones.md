@@ -36,12 +36,12 @@ outlines:
     - what: rectangle
       where: true
       size: [$default_width, $default_height]
-    
+
     # Add a circle in the middle
     - what: circle
       where:
-      	# Averaging matrix_inner_home and mirror_matrix_inner_home
-      	# gives us a point exactly between them
+        # Averaging matrix_inner_home and mirror_matrix_inner_home
+        # gives us a point exactly between them
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
       radius: .25U
 ```
@@ -99,7 +99,8 @@ points:
 
   zones.center_button:
     anchor:
-    	# This works now because the mirror point is computed once the matrix zone is finished
+      # This works now because the mirror point is computed as soon as the the
+      # matrix zone has been fully declared
       ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
 
 outlines:
