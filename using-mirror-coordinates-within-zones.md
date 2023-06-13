@@ -28,9 +28,19 @@ Now what if we wanted to add a circle exactly in the middle? As long as we are i
 
 ```yaml
 meta:
-  # ...
+  engine: "4.0.0"
+
 points:
-  # ...
+  mirror:
+    ref: matrix_inner_home
+    distance: 3U
+
+  zones.matrix:
+    columns:
+      outer:
+      inner:
+    rows.home:
+
 outlines:
   example:
     - what: rectangle
