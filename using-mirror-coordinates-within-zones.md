@@ -121,7 +121,7 @@ outlines:
 
 ```
 
-There is a caveat to using this trick, which is if multiple zones need to be mirrored then you must mirror each one individually. You could use a YAML anchor and alias to keep that as DRY as possible, or you can use Ergogen's `$extends` preprocessor to accomplish the same thing. The latter syntax is preferred because Ergogen also supports configs in JSON format, so it makes sense to avoid using a YAML-specific feature. Let's add a thumb cluster to show how this would work.
+There is a caveat to using this trick, which is if multiple zones need to be mirrored then you must mirror each one individually. You can use Ergogen's `$extends` preprocessor keep the file as DRY as possible. (You could also use a YAML anchor but [`$extends` is preferred](prefer-extends-to-yaml-anchors.md)). Let's add a thumb cluster to show how this would work.
 
 ```yaml
 meta:
