@@ -121,7 +121,7 @@ outlines:
 
 ```
 
-There is a caveat to using this trick, which is if multiple zones need to be mirrored then you must mirror each one individually. You can use Ergogen's `$extends` preprocessor keep the file as DRY as possible. (You could also use a YAML anchor but [`$extends` is preferred](prefer-extends-to-yaml-anchors.md)). Let's add a thumb cluster to show how this would work.
+There is a caveat to using this trick, which is if multiple zones need to be mirrored then you must mirror each one individually. You can use YAML anchors or Ergogen's `$extends` preprocessor keep the file as DRY as possible. (For now I'd recommend using YAML anchors but eventually [`$extends` will become preferred](prefer-extends-to-yaml-anchors.md)). Let's add a thumb cluster to show how this would work.
 
 ```yaml
 meta:
@@ -129,7 +129,7 @@ meta:
 
 points:
   zones.matrix:
-    mirror:
+    mirror: &mirror
       ref: matrix_inner_home
       distance: 3U
     columns:
@@ -140,8 +140,7 @@ points:
   # Add a thumb cluster
   zones.thumbs:
     # Grab the mirror directive from the matrix zone so we can mirror this zone identically
-    mirror:
-      $extends: points.zones.matrix.mirror
+    mirror: *mirror
     anchor:
       ref: matrix_inner_home
       shift: [0, -1.25U]

@@ -1,9 +1,13 @@
-# Prefer `$extends` to YAML anchors
+# Cautiously use  YAML anchors and `$extends` ~~Prefer `$extends` to YAML anchors~~
 
-You may find yourself needing to duplicate some of your config to share attributes between multiple sections (see [Mirror refs within the `points` section](using-mirror-coordinates-within-zones.md) for an example). Since our config files are in YAML, we could use YAML's anchor/alias feature, or we could use Ergogen's built-in `$extends` syntax. They both will accomplish the same thing, but latter `$extends` is preferred because you can also write Ergogen files in JSON. YAML anchors will only work in YAML files, whereas `$extends` will work in both file formats.
+You may find yourself needing to duplicate some of your config to share attributes between multiple sections (see [Mirror refs within the `points` section](using-mirror-coordinates-within-zones.md) for an example). Since our config files are in YAML, we could use YAML's anchor/alias feature, or we could use Ergogen's built-in `$extends` syntax. They both will accomplish the same thing.
+
+Ideally we would always prefer `$extends` to anchors because you can also write Ergogen files in JSON and of course YAML anchors will only work in YAML files, whereas `$extends` will work in both file formats. 
+
+Unfortunately at the current time you cannot nest calls to `$extends`, which is an untintentional oversight in ergogen. My recommendation is to check the status of this [issue](https://github.com/ergogen/ergogen/issues/97) and once it's closed, always prefer `$extend` to yaml anchors... but until that day, you'll want to use anchors too.
 
 ```yaml
-# Anchors work but are NOT preferred
+# Anchors work, but only in YAML files
 points:
   zones.matrix:
     mirror: &mirror
@@ -16,7 +20,8 @@ points:
 ```
 
 ```yaml
-# Extends is preferred
+# Extends do the same thing
+# and will be preferred once they can be nested
 points:
   zones.matrix:
     mirror:
