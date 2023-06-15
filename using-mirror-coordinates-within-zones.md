@@ -227,7 +227,7 @@ outlines:
       size: [$default_width, $default_height]
 ```
 
-The solution is to move the rotate directive to the same level as mirror. It seems that you only need to do this in one place, and everywhere that uses the mirror anchor/$extends will pick this up.
+The solution is to move the rotate directive to the same level as mirror. It seems that you only need to do this in one place, and everywhere that uses the mirror anchor/$extends will pick this up when you reference an anchor in this zone.
 
 ```yaml
 meta:
