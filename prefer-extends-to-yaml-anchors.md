@@ -9,8 +9,10 @@ points:
     mirror: &mirror
       ref: some_key
       distance: 4U
+    key.name: some_key
   zones.thumb:
     mirror: *mirror
+    anchor.shift: [0, 1.25U]
 ```
 
 ```yaml
@@ -20,11 +22,14 @@ points:
     mirror:
       ref: some_key
       distance: 4U
+    key.name: some_key
   zones.thumb:
     mirror:
-      $extends: points.zones.matrix
+      $extends: points.zones.matrix.mirror
+    anchor.shift: [0, 1.25U]
 
 # You could also one-liner it
   zones.another_thumb:
-    mirror.$extends: points.zones.matrix
+    mirror.$extends: points.zones.matrix.mirror
+    anchor.shift: [0, 2.5U]
 ```
